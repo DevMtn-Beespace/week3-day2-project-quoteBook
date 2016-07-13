@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quoteApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quote Book</title>
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body ng-controller='mainCtrl'>
+<input ng-model="newQuoteText" placeholder="Add New Quote"type="text" style="width:60%"><br>
+<input ng-model="newQuoteAuthor" placeholder="Author"type="text" style="width:10%">
+<button ng-click="addQuote()">Add New Quote</button>
+<br>
+<br>
+<div>Filter Quotes <input type="text" ng-model='filterText'/><br>
+<button>Filter Quotes</button>
+<p ng-repeat = "quote in quotes | filter: filterText">...</p>
+</div>
+<h1>Quotes</h1>
+<div ng-repeat="quotes in getData track by $index">
+  <p>{{quotes.text}}</p>
+  <small>-- {{quotes.author}}</small>
+  <br>
+  <button ng-click="deleteMe(quotes.text)">Delete Quote</button>
+</div>
+
+
+
+  <!-- ANGULAR -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+  <!-- APPS / MODULES ... app.js must come first-->
+  <script type="text/javascript" src="./js/app.js"></script>
+  <!-- CONTROLLERS -->
+  <script type="text/javascript" src="./js/mainCtrl.js"></script>
+  <!-- SERVICES  -->
+  <script type="text/javascript" src="./js/quoteServ.js"></script>
+</body>
+</html>
