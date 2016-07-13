@@ -9,16 +9,14 @@
 </head>
 <body ng-controller='mainCtrl'>
 <input ng-model="newQuoteText" placeholder="Add New Quote"type="text" style="width:60%"><br>
-<input ng-model="newQuoteAuthor" placeholder="Author"type="text" style="width:10%">
+<input ng-model="newQuoteAuthor" placeholder="Author"type="text" style="width:30%">
 <button ng-click="addQuote()">Add New Quote</button>
 <br>
 <br>
-<div>Filter Quotes <input type="text" ng-model='filterText'/><br>
-<button>Filter Quotes</button>
-<p ng-repeat = "quote in quotes | filter: filterText">...</p>
+<div>Filter Quotes <input type="text" placeholder="search" ng-model="filterText"/><br>
 </div>
 <h1>Quotes</h1>
-<div ng-repeat="quotes in getData track by $index">
+<div ng-repeat="quotes in getData | filter: filterText">
   <p>{{quotes.text}}</p>
   <small>-- {{quotes.author}}</small>
   <br>
